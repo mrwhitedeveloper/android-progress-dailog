@@ -2,6 +2,7 @@
 
 Use
 AProgressDialog aProgressDialog=new AProgressDialog();
+
 aProgressDialog.show(getSupportFragmentManager(), "any tag hoes here");
 
 
