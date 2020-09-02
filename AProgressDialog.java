@@ -85,7 +85,7 @@ public class AProgressDialog extends DialogFragment {
         startedShowing = false;
         mStopMillisecond = Long.MAX_VALUE;
 
-        showHandler = new Handler();
+        showHandler = new Handler(Looper.getMainLooper());
         showHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -128,7 +128,7 @@ public class AProgressDialog extends DialogFragment {
 
     private void cancelWhenShowing() {
         if (mStopMillisecond < mStartMillisecond + DELAY_MILLISECOND + MINIMUM_SHOW_DURATION_MILLISECOND) {
-            final Handler handler = new Handler();
+            final Handler handler =new Handler(Looper.getMainLooper());
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -141,8 +141,8 @@ public class AProgressDialog extends DialogFragment {
     }
 
     private void cancelWhenNotShowing() {
-        final Handler handler = new Handler();
-        handler.postDelayed(() -> dismiss(), DELAY_MILLISECOND);
+        final Handler handler =new Handler(Looper.getMainLooper());
+        handler.postDelayed(() -> AProgressDialog.this.dismiss(), DELAY_MILLISECOND);
     }
 
     @Override
